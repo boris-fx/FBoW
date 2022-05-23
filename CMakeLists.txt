@@ -280,7 +280,10 @@ set(CMAKE_EXE_LINKER_FLAGS_DEBUG ${CMAKE_EXE_LINKER_FLAGS_DEBUG} ${EXTRA_EXE_LIN
 
 add_definitions(-DNOMINMAX)
 
+file(GLOB_RECURSE FBOW_HEADERS include/fbow/*.h)
+
 set(SOURCES
+    ${FBOW_HEADERS}
     src/fbow.cpp
     src/vocabulary_creator.cpp)
 

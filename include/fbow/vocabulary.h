@@ -75,7 +75,7 @@ public:
     size_t size() const { return _params._nblocks; }
     //removes all data
     void clear();
-    //returns a hash value idinfying the vocabulary
+    //returns a hash value identifying the vocabulary
     uint64_t hash() const;
 
 private:
@@ -86,15 +86,17 @@ private:
         uint64_t _desc_size_bytes_wp = 0;     //size of the descriptor(includes padding)
         uint64_t _block_size_bytes_wp = 0;    //size of a block   (includes padding)
         uint64_t _feature_off_start = 0;      //within a block, where the features start
-        uint64_t _child_off_start = 0;        //within a block,where the children offset part starts
+        uint64_t _child_off_start = 0;        //within a block, where the children offset part starts
         uint64_t _total_size = 0;
         int32_t _desc_type = 0, _desc_size = 0; //original descriptor types and sizes (without padding)
         uint32_t _m_k = 0;                      //number of children per node
+
+        params() { _desc_name_[0] = 0; }
     };
     params _params;
     char* _data = nullptr; //pointer to data
 
-    //structure represeting a information about node in a block
+    //structure representing information about a node in a block
     struct block_node_info {
         uint32_t id_or_childblock; //if id ,msb is 1.
         float weight;

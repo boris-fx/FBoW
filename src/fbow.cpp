@@ -374,16 +374,14 @@ BoWVector Vocabulary::transform(const cv::Mat &features)
     return result;
 }
 
-
-
 void Vocabulary::clear()
 {
-    if (_data!=0) AlignedFree(_data);
-    _data=0;
-    memset(&_params,0,sizeof(_params));
-    _params._desc_name_[0]='\0';
+    if (_data) {
+        AlignedFree(_data);
+        _data = nullptr;
+    }
+    _params = params();
 }
-
 
 //loads/saves from a file
 void Vocabulary::readFromFile(const std::string &filepath){
